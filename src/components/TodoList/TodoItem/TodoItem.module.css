@@ -1,0 +1,16 @@
+.TodoItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.Button {
+    cursor: pointer;
+    background-color: red;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+}

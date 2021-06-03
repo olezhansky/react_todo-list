@@ -1,0 +1,13 @@
+.TodoList {
+    margin-top: -30px;
+}
+.TodoListTitle {
+    text-align: right;
+    color:brown;
+}
+.TodoListItems {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+}
