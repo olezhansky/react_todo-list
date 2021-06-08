@@ -1,4 +1,4 @@
-import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_FROM_LOCAL_STORAGE } from "./typeActions"
+import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER, TODOS_FROM_LOCAL_STORAGE } from "./typeActions"
 
 const initialState = {
     todos: []
@@ -13,7 +13,7 @@ export const rootReducer = (state = initialState, action) => {
                 todos: newTodos
             }
         case ADD_TODO:
-            const newTodo = {title: action.payload.title, id: Date.now(), completed: false}
+            const newTodo = {title: action.payload.title, id: Date.now(), completed: false, order: Date.now()}
             return {
                 ...state,
                 todos: [...state.todos, newTodo]
@@ -28,6 +28,21 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 todos: todoToggle
+            }
+        case TODOS_CHANGE_ORDER:
+            let orderedTodos = state.todos.map(t => {
+                if (t.id === action.payload.todo.id) {
+                  return {...t, order: action.payload.currentTodo.order}
+                }
+                if (t.id === action.payload.currentTodo.id) {
+                  return {...t, order: action.payload.todo.order}
+                }
+                return t
+              })
+            
+            return {
+                ...state,
+                todos: orderedTodos
             }
         case TODOS_FROM_LOCAL_STORAGE:
             return {

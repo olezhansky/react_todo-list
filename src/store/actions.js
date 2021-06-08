@@ -1,4 +1,4 @@
-import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_FROM_LOCAL_STORAGE } from "./typeActions"
+import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_FROM_LOCAL_STORAGE, TODOS_CHANGE_ORDER } from "./typeActions"
 
 export const addTodoAction = (title) => {
     return {
@@ -25,5 +25,12 @@ export const todosFromLocalStorageAction = todosFromLocalStorage => {
     return {
       type: TODOS_FROM_LOCAL_STORAGE,
       payload: JSON.parse(todosFromLocalStorage),
+    };
+  };
+
+export const todosChangeOrderAction = (todo, currentTodo) => {
+    return {
+      type: TODOS_CHANGE_ORDER,
+      payload: {todo, currentTodo}
     };
   };
