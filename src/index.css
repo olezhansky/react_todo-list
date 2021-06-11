@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.wrapper {
+.app {
   padding-top: 5rem;
   margin: 0 auto;
   width: 600px;
@@ -20,7 +20,6 @@ code {
 
 .done {
   text-decoration: line-through;
-  font-weight: 300;
 }
 
 .lds-spinner {

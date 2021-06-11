@@ -3,6 +3,7 @@ import styles from './TodoList.module.css'
 import TodoItem from './TodoItem/TodoItem'
 import { useDispatch } from 'react-redux'
 import { todosChangeOrderAction } from '../../store/actions'
+import PropTypes from "prop-types";
 
 const TodoList = ({todos}) => {
 
@@ -55,6 +56,10 @@ const TodoList = ({todos}) => {
             </ul>
         </div>
     )
+}
+
+TodoList.propTypes = {
+    todos: PropTypes.array
 }
 
 export default TodoList

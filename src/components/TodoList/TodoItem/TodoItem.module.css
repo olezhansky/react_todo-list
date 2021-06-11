@@ -2,9 +2,11 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
+    word-wrap: break-word;
+}
+.TodoItemMain {
     display: flex;
     justify-content: space-between;
-    word-wrap: break-word;
 }
 
 .Button {
@@ -13,4 +15,9 @@
     outline: none;
     border: none;
     border-radius: 50%;
+}
+.TodoItemDate {
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
 }

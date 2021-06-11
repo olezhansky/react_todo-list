@@ -1,10 +1,11 @@
-import { Checkbox } from '@material-ui/core'
 import React from 'react'
+import { Checkbox } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { onChangeTodoAction, removeTodoAction } from '../../../store/actions'
 import styles from './TodoItem.module.css'
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PropTypes from "prop-types";
 
 const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
     const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
             draggable={true}
             className={styles.TodoItem} 
         >
+            <div className={styles.TodoItemMain} >
             <span className={styleArr.join(' ')}>
                  <Checkbox
                     value="checkedA"
@@ -41,12 +43,27 @@ const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
                 <strong>{index + 1}</strong>
                 &nbsp;
                 {todo.title}
+                
             </span>
             <IconButton aria-label="delete" onClick={handleRemoveTodo}>
                 <DeleteIcon  />
             </IconButton>
+            </div>
+            <div className={styles.TodoItemDate}>
+                {todo.date}
+            </div>
         </li>
     )
+}
+
+TodoItem.propTypes = {
+    todo: PropTypes.object,
+    index: PropTypes.number,
+    dragStart: PropTypes.func,
+    dragEnd: PropTypes.func,
+    dragOver: PropTypes.func,
+    drop: PropTypes.func,
+    
 }
 
 export default TodoItem

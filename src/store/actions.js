@@ -1,4 +1,4 @@
-import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_FROM_LOCAL_STORAGE, TODOS_CHANGE_ORDER } from "./typeActions"
+import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_FROM_LOCAL_STORAGE, TODOS_CHANGE_ORDER, BASKET_TODOS_FROM_LOCAL_STORAGE, CLEAR_ALL_BASKET_TODO } from "./typeActions"
 
 export const addTodoAction = (title) => {
     return {
@@ -20,11 +20,21 @@ export const onChangeTodoAction = (todoId) => {
         payload: todoId
     }
 }
-
 export const todosFromLocalStorageAction = todosFromLocalStorage => {
     return {
       type: TODOS_FROM_LOCAL_STORAGE,
       payload: JSON.parse(todosFromLocalStorage),
+    };
+  };
+export const basketTodosFromLocalStorageAction = basketTodosFromLocalStorage => {
+    return {
+      type: BASKET_TODOS_FROM_LOCAL_STORAGE,
+      payload: JSON.parse(basketTodosFromLocalStorage),
+    };
+  };
+export const clearAllBasketTodoAction = () => {
+    return {
+      type: CLEAR_ALL_BASKET_TODO,
     };
   };
 

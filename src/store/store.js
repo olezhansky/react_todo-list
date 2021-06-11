@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import {rootReducer} from './rootReducer'
 import thunk from 'redux-thunk'
-import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from './typeActions';
+import { ADD_TODO, CHANGE_TODO, CLEAR_ALL_BASKET_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from './typeActions';
 
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -14,6 +14,10 @@ const localStorageMiddleware = ({ getState }) => next => action => {
     if (action.type === ADD_TODO || action.type === REMOVE_TODO || action.type === CHANGE_TODO || action.type === TODOS_CHANGE_ORDER) {
         const { todos } = getState();
         localStorage.setItem("todos", JSON.stringify(todos));
+    }
+    if (action.type === ADD_TODO || action.type === REMOVE_TODO || action.type === CHANGE_TODO || action.type === TODOS_CHANGE_ORDER || action.type === CLEAR_ALL_BASKET_TODO) {
+        const { basketTodos } = getState();
+        localStorage.setItem("basketTodos", JSON.stringify(basketTodos));
     }
     return result;
 };

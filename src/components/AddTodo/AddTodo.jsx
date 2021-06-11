@@ -5,12 +5,9 @@ import styles from './AddTodo.module.css'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-
-
 const AddTodo = () => {
     const [title, setValue] = useState('')
     const dispatch = useDispatch()
-
     const onSubmit = (event) => {
         event.preventDefault()
         if (title.trim()) {
@@ -18,7 +15,6 @@ const AddTodo = () => {
             setValue('')
         }
     }
-
     const useStyles = makeStyles((theme) => ({
         root: {
           '& > *': {
@@ -27,22 +23,19 @@ const AddTodo = () => {
           },
         },
     }));
+    const classes = useStyles();
 
-
-        const classes = useStyles();
-      
-        return (
-          <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
-            <TextField 
-                id="outlined-basic" label="Input todo" variant="outlined" 
-                value={title}
-                onChange={event => setValue(event.target.value)}
-                type="text"
-            />
-            <button className={styles.Button}>Add todo</button>
-          </form>
-        );
-      
+    return (
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={onSubmit}>
+        <TextField 
+            id="outlined-basic" label="Input todo" variant="outlined" 
+            value={title}
+            onChange={event => setValue(event.target.value)}
+            type="text"
+        />
+        <button className={styles.Button}>Add todo</button>
+      </form>
+    );  
 }
 
 export default AddTodo
