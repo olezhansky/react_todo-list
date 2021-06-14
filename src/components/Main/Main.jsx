@@ -1,4 +1,4 @@
-import {Switch, Route } from 'react-router-dom'
+import {Switch, Route, Redirect } from 'react-router-dom'
 import AddTodo from '../AddTodo/AddTodo'
 import TodoList from '../TodoList/TodoList'
 import NoTodos from '../../assets/NoTodos/NoTodos'
@@ -20,6 +20,7 @@ const Main = () => {
                 <Route path="/basket">
                     <Basket />
                 </Route>
+                <Redirect to="/todolist" />
             </Switch>
         </>
     )
