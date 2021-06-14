@@ -5,11 +5,9 @@ import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from './todos/
 import {todosReducer} from './todos/reducer'
 import {basketTodosReducer} from './basketTodos/reducer'
 
-
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
   : (f) => f;
-
 
 const localStorageMiddleware = ({ getState }) => next => action => {
     const result = next(action);

@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from "prop-types";
 import { onChangeTodoAction, removeTodoAction } from '../../../store/todos/actions';
 import { addTodoToBasketAction } from '../../../store/basketTodos/actions';
+import classNames from 'classnames'
 
 const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
     const dispatch = useDispatch()
@@ -17,12 +18,6 @@ const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
     }
     
     const handleOnChangeTodo = () => dispatch(onChangeTodoAction(todo.id))
-
-    const styleArr = []
-    
-    if (todo.completed) {
-        styleArr.push('done')
-    }
 
     return (
         <li 
@@ -35,23 +30,26 @@ const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
             className={styles.TodoItem} 
         >
             <div className={styles.TodoItemMain} >
-            <span className={styleArr.join(' ')}>
-                 <Checkbox
-                    value="checkedA"
-                    inputProps={{ 'aria-label': 'Checkbox A' }}
-                    checked={todo.completed}
-                    type="checkbox"
-                    onChange={handleOnChangeTodo}
-                 />
-                &nbsp;
-                <strong>{index + 1}</strong>
-                &nbsp;
-                {todo.title}
-                
-            </span>
-            <IconButton aria-label="delete" onClick={handleRemoveTodo}>
-                <DeleteIcon  />
-            </IconButton>
+                <div className={styles.TodoItemMainContent}>
+                    <Checkbox
+                        value="checkedA"
+                        inputProps={{ 'aria-label': 'Checkbox A' }}
+                        checked={todo.completed}
+                        type="checkbox"
+                        onChange={handleOnChangeTodo}
+                    />
+                    <strong>{index + 1}</strong>
+                    &nbsp;
+                    <span 
+                        className={classNames(styles, {
+                            [styles.Done]: todo.completed,
+                            [styles.Text]: true
+                        })}
+                    >{todo.title}</span>
+                </div>
+                <IconButton aria-label="delete" onClick={handleRemoveTodo}>
+                    <DeleteIcon  />
+                </IconButton>
             </div>
             <div className={styles.TodoItemDate}>
                 {todo.date}
