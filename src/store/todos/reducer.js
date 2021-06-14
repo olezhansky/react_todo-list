@@ -1,4 +1,4 @@
-import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER, TODOS_FROM_LOCAL_STORAGE } from "./types"
+import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from "./types"
 
 const initialState = []
 
@@ -26,8 +26,6 @@ export const todosReducer = (state = initialState, action) => {
                 }
                 return t
               })
-        case TODOS_FROM_LOCAL_STORAGE:
-            return [...state, ...action.payload]
         default: 
             return state
     }
