@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addTodoAction } from '../../store/actions'
 import styles from './AddTodo.module.css'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { addTodoAction } from '../../store/todos/actions';
 
 const AddTodo = () => {
     const [title, setValue] = useState('')

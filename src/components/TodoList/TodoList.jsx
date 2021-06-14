@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import styles from './TodoList.module.css'
 import TodoItem from './TodoItem/TodoItem'
 import { useDispatch } from 'react-redux'
-import { todosChangeOrderAction } from '../../store/actions'
 import PropTypes from "prop-types";
+import { todosChangeOrderAction } from '../../store/todos/actions';
 
 const TodoList = ({todos}) => {
 

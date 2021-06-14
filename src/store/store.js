@@ -1,7 +1,9 @@
-import {createStore, applyMiddleware, compose} from 'redux';
-import {rootReducer} from './rootReducer'
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk'
-import { ADD_TODO, CHANGE_TODO, CLEAR_ALL_BASKET_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from './typeActions';
+import { CLEAR_ALL_BASKET_TODO } from './basketTodos/types';
+import { ADD_TODO, CHANGE_TODO, REMOVE_TODO, TODOS_CHANGE_ORDER } from './todos/types';
+import {todosReducer} from './todos/reducer'
+import {basketTodosReducer} from './basketTodos/reducer'
 
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
@@ -21,6 +23,11 @@ const localStorageMiddleware = ({ getState }) => next => action => {
     }
     return result;
 };
+
+export const rootReducer = combineReducers({
+    todos: todosReducer,
+    basketTodos: basketTodosReducer
+})
 
 const store = createStore( 
     rootReducer,

@@ -5,11 +5,13 @@ import NoTodos from '../../assets/NoTodos/NoTodos'
 import Basket from '../Basket/Basket'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { basketTodosFromLocalStorageAction, todosFromLocalStorageAction } from '../../store/actions'
+import { basketTodosFromLocalStorageAction } from '../../store/basketTodos/actions'
+import { todosFromLocalStorageAction } from '../../store/todos/actions'
 
 const Main = () => {
 
     const todos = useSelector(state => state.todos)
+
     const dispatch = useDispatch()
   
     useEffect(() => {

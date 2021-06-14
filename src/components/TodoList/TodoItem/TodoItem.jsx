@@ -1,16 +1,20 @@
 import React from 'react'
 import { Checkbox } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
-import { onChangeTodoAction, removeTodoAction } from '../../../store/actions'
 import styles from './TodoItem.module.css'
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from "prop-types";
+import { onChangeTodoAction, removeTodoAction } from '../../../store/todos/actions';
+import { addTodoToBasketAction } from '../../../store/basketTodos/actions';
 
 const TodoItem = ({todo, index, dragStart, dragEnd, dragOver, drop}) => {
     const dispatch = useDispatch()
     
-    const handleRemoveTodo = () => dispatch(removeTodoAction(todo.id))
+    const handleRemoveTodo = () => {
+        dispatch(removeTodoAction(todo.id))
+        dispatch(addTodoToBasketAction(todo))
+    }
     
     const handleOnChangeTodo = () => dispatch(onChangeTodoAction(todo.id))
 

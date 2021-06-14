@@ -3,7 +3,7 @@ import styles from './Basket.module.css'
 import BasketTodo from './BasketTodo/BasketTodo'
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
-import { clearAllBasketTodoAction } from '../../store/actions';
+import { clearAllBasketTodoAction } from '../../store/basketTodos/actions';
 
 const Basket = () => {
     const basketTodos = useSelector(state => state.basketTodos)
@@ -29,7 +29,7 @@ const Basket = () => {
             }
             <ul>
                 {basketTodos.map((basketTodo, index) => {
-                    return <BasketTodo basketTodo={basketTodo} key={basketTodo.id} index={index}/> 
+                    return <BasketTodo basketTodo={basketTodo} key={index} index={basketTodo.id}/> 
                 })}
             </ul>
         </div>
