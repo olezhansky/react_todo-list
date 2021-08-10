@@ -1,6 +1,13 @@
 .TodoListTitle {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
     color:brown;
+}
+.TodoListText {
+    font-size: 12px;
+    line-height: 12px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 .TodoListItems {
     margin-left: 8px;

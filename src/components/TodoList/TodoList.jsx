@@ -35,9 +35,12 @@ const TodoList = ({todos}) => {
     return (
         <div className={styles.TodoList}>
             <p className={styles.TodoListTitle}>
-                {todos.length}
-                &nbsp;
-                todo in list
+                <span className={styles.TodoListText}>drag-and-drop*</span>
+                <span>
+                    {todos.length}
+                    &nbsp;
+                     todo in list
+                </span>
             </p>
             <ul className={styles.TodoListItems}>
                 {todos.sort(sortTodos).map((todo, index) => {
